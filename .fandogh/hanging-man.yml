@@ -1,0 +1,14 @@
+kind: ExternalService
+name: hanging-man
+spec:
+    image: hanging-man:${CIRCLE_SHA1}
+    allow_http: true
+    replicas: 1
+    port: 80
+
+    resources:
+        memory: 200Mi
+
+    env:
+        - name: CIRCLE_SHA1
+          value: ${CIRCLE_SHA1}

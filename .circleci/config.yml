@@ -1,0 +1,20 @@
+version: 2
+jobs:
+    build:
+        docker:
+            - image: circleci/python:3.6
+        steps:
+            - checkout
+            - run:
+                  command: |
+                      python3 -m venv venv
+                      . venv/bin/activate
+                      pip install --upgrade pip
+                      pip install fandogh-cli --upgrade
+                      echo 'N' | fandogh login --username=$FANDOGH_USERNAME --password=$FANDOGH_PASSWORD
+                      echo $IMAGE | fandogh image publish --version=$CIRCLE_SHA1
+                      fandogh service apply -f .fandogh/hanging-man.yml -p CIRCLE_SHA1=$CIRCLE_SHA1
+                  environment:
+                      IMAGE: hanging-man
+                      FANDOGH_USERNAME: YOUR_USERNAME
+                      FANDOGH_PASSWORD: YOUR_PASSWORD
