@@ -1,6 +1,6 @@
 <template>
     <form>
-        <button type="button" class="btn btn-success" @click="sendTime">Let's go play</button>
+        <button type="button" class="btn btn-success" @click="sendTime">بزن بریم برای نجات یک انسان</button>
     </form>
 </template>
 

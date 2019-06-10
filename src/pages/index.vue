@@ -1,13 +1,13 @@
 <template>
     <div class="container">
         <div class="header row">
-            <h3 class="text-muted col-md-8">Hanging Man</h3>
+            <h3 class="text-muted col-md-8">نجات یک مرد</h3>
             <div class="col-md-4 text-right">
                 <timer-setup v-if="!userTime" @set-time="setTime"></timer-setup>
                 <div v-else>
                     <div class="row">
                         <div class="col">
-                            <button class="btn btn-success" v-if="!isRunning" @click="start">START</button>
+                            <button class="btn btn-success" v-if="!isRunning" @click="start">شروع</button>
                         </div>
                         <div class="col">
                             <timer :time="prettyTime" class="mt-2"></timer>
@@ -20,11 +20,11 @@
             <div class="col-md-12" v-if="userLoss">
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
                     <h5 class="alert-heading">
-                        Lost :( Try again
+                       اوووه شما موفق برای نجات مرد نشدید
                     </h5>
                     <hr>
                     <p class="mb-0">
-                        <button class="btn btn-success" @click="restart">RESTART</button>
+                        <button class="btn btn-success" @click="restart">شروع دوباره</button>
                     </p>
                     <button type="button" class="close" data-dismiss="alert">
                         <span aria-hidden="true">&times;</span>
@@ -34,7 +34,7 @@
             <div class="col-md-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Help this man to guess the correct word:</h3>
+                        <h3 class="panel-title">برای نجات یک انسان از مرگ کلمات را حدس بزنید:</h3>
                     </div>
                     <div class="panel-body text-center" :class="{'disable': userLoss}">
                         <div class="keyboard">
